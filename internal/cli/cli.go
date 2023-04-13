@@ -59,6 +59,23 @@ func NewApp(version string, start time.Time) (app *cli.App) {
 			Usage:   "log `format` (json,text)",
 			Value:   "text",
 		},
+		&cli.StringFlag{
+			Name:    "auth-method",
+			EnvVars: []string{"VAC_AUTH_METHOD"},
+			Usage:   "method `name` (token, oidc, write)",
+			Value:   "token",
+		},
+		&cli.StringFlag{
+			Name:    "auth-path",
+			EnvVars: []string{"VAC_AUTH_PATH"},
+			Usage:   "remote `path` (token/, oidc/, userpass/)",
+			Value:   "",
+		},
+		&cli.BoolFlag{
+			Name:    "auth-no-store",
+			EnvVars: []string{"VAC_AUTH_NO_STORE"},
+			Usage:   "prevent storing vault token on disk",
+		},
 	}
 
 	app.Action = cmd.ExecWrapper(cmd.Switch)
