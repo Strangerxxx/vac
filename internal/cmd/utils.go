@@ -2,19 +2,19 @@ package cmd
 
 import (
 	"fmt"
-	kvbuilder "github.com/hashicorp/go-secure-stdlib/kv-builder"
-	"github.com/mitchellh/mapstructure"
-	"github.com/mvisonneau/vac/pkg/client"
 	"strings"
 	"time"
 
+	kvbuilder "github.com/hashicorp/go-secure-stdlib/kv-builder"
 	"github.com/hashicorp/vault/sdk/helper/mlock"
 	"github.com/mitchellh/go-homedir"
+	"github.com/mitchellh/mapstructure"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	cli "github.com/urfave/cli/v2"
 
 	"github.com/mvisonneau/go-helpers/logger"
+	"github.com/mvisonneau/vac/pkg/client"
 )
 
 var start time.Time
