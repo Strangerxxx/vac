@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	cli "github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v2"
 
 	"github.com/mvisonneau/vac/internal/cmd"
 )
@@ -64,6 +64,11 @@ func NewApp(version string, start time.Time) (app *cli.App) {
 			EnvVars: []string{"VAC_AUTH_METHOD"},
 			Usage:   "method `name` (token, oidc, write)",
 			Value:   "token",
+		},
+		&cli.StringSliceFlag{
+			Name:    "auth-method-args",
+			EnvVars: []string{"VAC_AUTH_METHOD_ARGS"},
+			Usage:   "method `args` `=`(equals sign) delimited (listenaddress=0.0.0.0, port=8250)",
 		},
 		&cli.StringFlag{
 			Name:    "auth-path",
