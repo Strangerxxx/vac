@@ -14,7 +14,7 @@ curl -sL \
     -d '{"sha":"'${HEAD_SHA}'","force":true}' \
     "https://api.github.com/repos/${REPOSITORY}/git/refs/tags/edge"
 
-# Ensure we execute some cleanup functions on exit 
+# Ensure we execute some cleanup functions on exit
 function cleanup {
   git tag -d ${PRERELEASE_TAG} || true
   git fetch --tags -f || true
@@ -24,7 +24,7 @@ trap cleanup EXIT
 # Build the binaries using a prerelease tag
 git tag -d edge
 git tag -f ${PRERELEASE_TAG}
-go run github.com/goreleaser/goreleaser@v1.15.2 release \
+goreleaser release \
     --rm-dist \
     --skip-validate \
     -f .goreleaser.pre.yml
